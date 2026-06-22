@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLINT CORP | Compliance &amp; Audit Support • Where Finance Meets Flow</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&amp;family=Inter:wght@300;400;500;600&amp;display=swap');
+        
+        :root {
+            --stone-light: #FAF7F2;
+            --stone-1: #F1E8D9;
+            --stone-2: #D6BFA6;
+            --stone-3: #A08F7A;
+            --stone-dark: #524B41;
+        }
+        
+        body {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-serif {
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .section-header {
+            font-size: 2.25rem;
+            line-height: 2.5rem;
+            color: #524B41;
+        }
+
+        .service-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+        }
+
+        .nav-active {
+            color: #524B41;
+            font-weight: 600;
+        }
+
+        .compliance-list li {
+            position: relative;
+            padding-left: 1.75rem;
+        }
+        
+        .compliance-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #A08F7A;
+            font-weight: bold;
+        }
+
+        .stone-bg {
+            background-color: #FAF7F2;
+        }
+
+        .accent-btn {
+            background-color: #524B41;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .accent-btn:hover {
+            background-color: #A08F7A;
+            transform: translateY(-1px);
+        }
+
+        .subtle-border {
+            border-color: #D6BFA6;
+        }
+
+        .modal {
+            animation: modalPop 0.3s ease forwards;
+        }
+
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .premium-shadow {
+            box-shadow: 0 10px 15px -3px rgb(82 75 65 / 0.1), 0 4px 6px -4px rgb(82 75 65 / 0.1);
+        }
+    </style>
+</head>
+<body class="bg-[#FAF7F2] text-[#524B41]">
+    <!-- NAV -->
+    <nav class="bg-white border-b border-[#D6BFA6] sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex items-center gap-x-3">
+                    <div class="w-11 h-11 bg-[#524B41] rounded-xl flex items-center justify-center">
+                        <span class="text-white text-3xl font-bold tracking-tighter">F</span>
+                    </div>
+                    <div>
+                        <div class="font-bold text-2xl tracking-tighter">FLINT CORP</div>
+                        <div class="text-[10px] text-[#A08F7A] -mt-1 font-medium">WHERE FINANCE MEETS FLOW</div>
+                    </div>
+                </div>
+
+                <!-- Desktop Nav -->
+                <div class="hidden md:flex items-center gap-x-9 text-sm font-medium">
+                    <a href="#services" class="hover:text-[#A08F7A] transition-colors">Services</a>
+                    <a href="#why-it-matters" class="hover:text-[#A08F7A] transition-colors">Why It Matters</a>
+                    <a href="#meet-bonita" class="hover:text-[#A08F7A] transition-colors">Meet Bonita</a>
+                    <a href="#contact" class="hover:text-[#A08F7A] transition-colors">Contact</a>
+                </div>
+
+                <div class="flex items-center gap-x-4">
+                    <!-- CTA Button -->
+                    <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
+                            class="hidden md:block px-6 py-2.5 text-sm font-semibold accent-btn rounded-2xl shadow-sm">
+                        Book Free Strategy Call
+                    </button>
+                    
+                    <!-- Mobile Menu -->
+                    <button id="mobile-menu-btn"
+                            class="md:hidden w-11 h-11 flex items-center justify-center text-[#524B41] hover:bg-[#F1E8D9] rounded-2xl transition-colors">
+                        <i class="fa-solid fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-[#D6BFA6] bg-white px-6 py-4">
+            <div class="flex flex-col gap-y-3 text-sm font-medium">
+                <a href="#services" class="py-2 hover:text-[#A08F7A]">Services</a>
+                <a href="#why-it-matters" class="py-2 hover:text-[#A08F7A]">Why It Matters</a>
+                <a href="#meet-bonita" class="py-2 hover:text-[#A08F7A]">Meet Bonita</a>
+                <a href="#contact" class="py-2 hover:text-[#A08F7A]">Contact</a>
+                <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' }); document.getElementById('mobile-menu').classList.add('hidden')"
+                        class="mt-2 w-full accent-btn py-3 rounded-2xl text-sm font-semibold">
+                    Book Free Strategy Call
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="relative bg-[#524B41] text-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 pt-16 pb-24 md:pt-20 md:pb-28">
+            <div class="grid md:grid-cols-12 gap-x-8 items-center">
+                <!-- Text Content -->
+                <div class="md:col-span-7 lg:col-span-7">
+                    <div class="inline-flex items-center gap-x-2 bg-white/10 backdrop-blur-md px-4 py-1.5 rounded-3xl mb-6 text-sm">
+                        <div class="w-2 h-2 bg-[#D6BFA6] rounded-full animate-pulse"></div>
+                        <span class="font-medium tracking-wide">Western Cape • South Africa</span>
+                    </div>
+                    
+                    <h1 class="heading-serif text-6xl md:text-6xl lg:text-7xl leading-[1.05] tracking-tighter mb-6">
+                        Compliance that<br>protects.<br>Simplifies.<br><span class="text-[#D6BFA6]">Empowers.</span>
+                    </h1>
+                    
+                    <p class="max-w-lg text-lg text-white/90 mb-8">
+                        Expert SARS, Department of Labour, COIDA, Employment Equity and 
+                        full audit preparation support for South African businesses that want 
+                        to stay compliant, reduce risk, and focus on growth.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <button onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' })" 
+                                class="px-8 py-4 text-base font-semibold accent-btn rounded-3xl flex items-center justify-center gap-x-3 shadow-lg hover:shadow-xl transition-all active:scale-[0.985]">
+                            <span>Book Your Free 30-Min Strategy Call</span>
+                        </button>
+                        
+                        <button onclick="document.getElementById('services').scrollIntoView({ behavior: 'smooth' })" 
+                                class="px-8 py-4 text-base font-semibold border-2 border-white/70 hover:bg-white/10 transition-all rounded-3xl flex items-center justify-center gap-x-2">
+                            <span>Explore Services</span>
+                        </button>
+                    </div>
+                    
+                    <div class="mt-8 flex items-center gap-x-6 text-sm">
+                        <div class="flex -space-x-2">
+                            <div class="w-8 h-8 bg-white/20 rounded-full border border-white/40"></div>
+                            <div class="w-8 h-8 bg-white/20 rounded-full border border-white/40"></div>
+                            <div class="w-8 h-8 bg-white/20 rounded-full border border-white/40"></div>
+                        </div>
+                        <div class="text-white/80 text-sm">
+                            Trusted by growing businesses across the Western Cape
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Hero Visual -->
+                <div class="md:col-span-5 lg:col-span-5 mt-12 md:mt-0">
+                    <div class="relative">
+                        <div class="aspect-[4/3] bg-white rounded-3xl overflow-hidden premium-shadow border border-white/20">
+                            <!-- Professional photo placeholder - REPLACE WITH YOUR IMAGE -->
+                            <img src="https://picsum.photos/id/1012/800/700" 
+                                 alt="Bonita Flint - Founder of FLINT CORP, professional finance and compliance expert working in a modern setting"
+                                 class="w-full h-full object-cover">
+                            
+                            <!-- Overlay badge -->
+                            <div class="absolute bottom-5 right-5 bg-white/95 backdrop-blur px-4 py-2 rounded-2xl shadow flex items-center gap-x-2 text-xs">
+                                <div class="text-[#524B41]">
+                                    <span class="font-semibold">Bonita Flint</span><br>
+                                    <span class="text-[#A08F7A] text-[10px]">Founder &amp; Principal</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Trust badge -->
+                        <div class="absolute -bottom-4 -left-4 bg-white px-5 py-3 rounded-2xl shadow-lg border border-[#D6BFA6] flex items-center gap-x-3">
+                            <div>
+                                <div class="text-xs text-[#A08F7A] font-medium">SARS &amp; LABOUR</div>
+                                <div class="font-semibold text-sm">Liaison Support</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Subtle bottom gradient -->
+        <div class="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#D6BFA6]/40 to-transparent"></div>
+    </header>
+
+    <!-- TRUST BAR -->
+    <div class="border-b border-[#D6BFA6] bg-white py-5">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-wrap justify-center md:justify-between items-center gap-x-8 gap-y-4 text-center text-sm">
+                <div class="flex items-center gap-x-2 text-[#524B41]">
+                    <i class="fa-solid fa-shield-halved text-[#A08F7A]"></i>
+                    <span class="font-medium">Full SARS eFiling &amp; Audit Management</span>
+                </div>
+                <div class="flex items-center gap-x-2 text-[#524B41]">
+                    <i class="fa-solid fa-users text-[#A08F7A]"></i>
+                    <span class="font-medium">Department of Labour &amp; UIF Compliance</span>
+                </div>
+                <div class="flex items-center gap-x-2 text-[#524B41]">
+                    <i class="fa-solid fa-file-contract text-[#A08F7A]"></i>
+                    <span class="font-medium">COIDA • Employment Equity • SETA</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="max-w-7xl mx-auto px-6 pt-16 pb-12">
+        <div class="text-center mb-12">
+            <div class="inline-block px-4 py-1 bg-[#F1E8D9] text-[#A08F7A] text-xs font-semibold tracking-[1.5px] rounded-3xl mb-3">WHAT WE DELIVER</div>
+            <h2 class="heading-serif text-5xl tracking-tighter">Comprehensive Compliance<br>&amp; Administrative Support</h2>
+            <p class="mt-4 max-w-md mx-auto text-[#A08F7A]">Everything you need to stay fully compliant, audit-ready, and focused on running your business.</p>
+        </div>
+
+        <!-- Service Cards Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Card 1: SARS -->
+            <div class="service-card bg-white border border-[#D6BFA6] rounded-3xl p-7 flex flex-col">
+                <div class="w-12 h-12 bg-[#F1E8D9] rounded-2xl flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-file-invoice-dollar text-3xl text-[#524B41]"></i>
+                </div>
+                <h3 class="font-semibold text-2xl tracking-tight mb-2">SARS Compliance</h3>
+                <p class="text-sm text-[#A08F7A] mb-5">Complete tax compliance and dispute management.</p>
+                
+                <ul class="compliance-list text-sm space-y-[7px] flex-1 mb-6 text-[#524B41]">
+                    <li>VAT submissions (VAT201)</li>
+                    <li>EMP201 monthly PAYE/UIF/SDL</li>
+                    <li>EMP501 bi-annual reconciliations</li>
+                    <li>Provisional Tax (IRP6) &amp; ITR14</li>
+                    <li>Tax Clearance Certificates (TCS)</li>
+                    <li>SARS audits, objections &amp; disputes</li>
+                </ul>
+                
+                <button onclick="selectService('SARS Compliance')" 
+                        class="mt-auto w-full py-3 text-sm font-semibold border border-[#524B41] hover:bg-[#524B41] hover:text-white rounded-2xl transition-all">
+                    Discuss SARS Support
+                </button>
+            </div>
+
+            <!-- Card 2: Department of Labour -->
+            <div class="service-card bg-white border border-[#D6BFA6] rounded-3xl p-7 flex flex-col">
+                <div class="w-12 h-12 bg-[#F1E8D9] rounded-2xl flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-briefcase text-3xl text-[#524B41]"></i>
+                </div>
+                <h3 class="font-semibold text-2xl tracking-tight mb-2">Department of Labour &amp; HR</h3>
+                <p class="text-sm text-[#A08F7A] mb-5">Employment compliance and HR administration done right.</p>
+                
+                <ul class="compliance-list text-sm space-y-[7px] flex-1 mb-6 text-[#524B41]">
+                    <li>UIF registrations &amp; declarations</li>
+                    <li>UI19 processing for terminated staff</li>
+                    <li>Employment contracts compliance</li>
+                    <li>Leave tracking &amp; payroll reviews</li>
+                    <li>Minimum wage compliance</li>
+                    <li>Disciplinary &amp; retrenchment support</li>
+                </ul>
+                
+                <button onclick="selectService('Department of Labour &amp; HR')" 
+                        class="mt-auto w-full py-3 text-sm font-semibold border border-[#524B41] hover:bg-[#524B41] hover:text-white rounded-2xl transition-all">
+                    Discuss Labour Support
+                </button>
+            </div>
+
+            <!-- Card 3: COIDA -->
+            <div class="service-card bg-white border border-[#D6BFA6] rounded-3xl p-7 flex flex-col">
+                <div class="w-12 h-12 bg-[#F1E8D9] rounded-2xl flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-hard-hat text-3xl text-[#524B41]"></i>
+                </div>
+                <h3 class="font-semibold text-2xl tracking-tight mb-2">COIDA / Compensation Fund</h3>
+                <p class="text-sm text-[#A08F7A] mb-5">Injury-on-duty and workplace safety compliance.</p>
+                
+                <ul class="compliance-list text-sm space-y-[7px] flex-1 mb-6 text-[#524B41]">
+                    <li>Annual Return of Earnings (ROE)</li>
+                    <li>Employer registration</li>
+                    <li>Letter of Good Standing</li>
+                    <li>Injury on Duty (IOD) claims</li>
+                    <li>Medical report &amp; reconciliation</li>
+                    <li>Health &amp; Safety documentation</li>
+                </ul>
+                
+                <button onclick="selectService('COIDA / Compensation Fund')" 
+                        class="mt-auto w-full py-3 text-sm font-semibold border border-[#524B41] hover:bg-[#524B41] hover:text-white rounded-2xl transition-all">
+                    Discuss COIDA Support
+                </button>
+            </div>
+
+            <!-- Card 4: Employment Equity -->
+            <div class="service-card bg-white border border-[#D6BFA6] rounded-3xl p-7 flex flex-col">
+                <div class="w-12 h-12 bg-[#F1E8D9] rounded-2xl flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-balance-scale text-3xl text-[#524B41]"></i>
+                </div>
+                <h3 class="font-semibold text-2xl tracking-tight mb-2">Employment Equity</h3>
+                <p class="text-sm text-[#A08F7A] mb-5">EE compliance, reporting and transformation support.</p>
+                
+                <ul class="compliance-list text-sm space-y-[7px] flex-1 mb-6 text-[#524B41]">
+                    <li>Employment Equity registration</li>
+                    <li>EEA2 &amp; EEA4 submissions</li>
+                    <li>EE Committee setup &amp; EE Plan</li>
+                    <li>Workforce profiling &amp; demographics</li>
+                    <li>Salary band analysis</li>
+                    <li>Equity target tracking</li>
+                </ul>
+                
+                <button onclick="selectService('Employment Equity')" 
+                        class="mt-auto w-full py-3 text-sm font-semibold border border-[#524B41] hover:bg-[#524B41] hover:text-white rounded-2xl transition-all">
+                    Discuss EE Support
+                </button>
+            </div>
+
+            <!-- Card 5: Skills Development -->
+            <div class="service-card bg-white border border-[#D6BFA6] rounded-3xl p-7 flex flex-col">
+                <div class="w-12 h-12 bg-[#F1E8D9] rounded-2xl flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-graduation-cap text-3xl text-[#524B41]"></i>
+                </div>
+                <h3 class="font-semibold text-2xl tracking-tight mb-2">Skills Development &amp; SETA</h3>
+                <p class="text-sm text-[#A08F7A] mb-5">Maximise grants and meet training compliance.</p>
+                
+                <ul class="compliance-list text-sm space-y-[7px] flex-1 mb-6 text-[#524B41]">
+                    <li>SDL reconciliation</li>
+                    <li>Workplace Skills Plan (WSP)</li>
+                    <li>Annual Training Report (ATR)</li>
+                    <li>SETA grant applications</li>
+                    <li>Training matrix management</li>
+                    <li>Learnership administration</li>
+                </ul>
+                
+                <button onclick="selectService('Skills Development &amp; SETA')" 
+                        class="mt-auto w-full py-3 text-sm font-semibold border border-[#524B41] hover:bg-[#524B41] hover:text-white rounded-2xl transition-all">
+                    Discuss SETA Support
+                </button>
+            </div>
+
+            <!-- Card 6: Business Admin & Audit Prep -->
+            <div class="service-card bg-white border border-[#D6BFA6] rounded-3xl p-7 flex flex-col">
+                <div class="w-12 h-12 bg-[#F1E8D9] rounded-2xl flex items-center justify-center mb-5">
+                    <i class="fa-solid fa-folder-check text-3xl text-[#524B41]"></i>
+                </div>
+                <h3 class="font-semibold text-2xl tracking-tight mb-2">Business Admin &amp; Audit Prep</h3>
+                <p class="text-sm text-[#A08F7A] mb-5">Audit-ready files and robust administrative systems.</p>
+                
+                <ul class="compliance-list text-sm space-y-[7px] flex-1 mb-6 text-[#524B41]">
+                    <li>Full document &amp; record management</li>
+                    <li>Debtor/creditor reconciliations</li>
+                    <li>VAT, PAYE, UIF, COIDA reviews</li>
+                    <li>Fixed asset registers</li>
+                    <li>Management accounts &amp; trial balance</li>
+                    <li>Complete audit file compilation</li>
+                </ul>
+                
+                <button onclick="selectService('Business Admin &amp; Audit Preparation')" 
+                        class="mt-auto w-full py-3 text-sm font-semibold border border-[#524B41] hover:bg-[#524B41] hover:text-white rounded-2xl transition-all">
+                    Discuss Audit Prep
+                </button>
+            </div>
+        </div>
+        
+        <div class="text-center mt-8">
+            <p class="text-sm text-[#A08F7A]">Need support across multiple areas? We offer tailored packages and ongoing retainer options.</p>
+        </div>
+    </section>
+
+    <!-- WHY IT MATTERS -->
+    <section id="why-it-matters" class="bg-[#524B41] text-white py-16">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-x-10 items-center">
+                <div class="md:col-span-5">
+                    <div class="text-[#D6BFA6] text-sm font-semibold tracking-[2px] mb-3">THE REAL COST OF NON-COMPLIANCE</div>
+                    <h2 class="heading-serif text-5xl tracking-tighter leading-none">Why This Matters</h2>
+                </div>
+                <div class="md:col-span-7 mt-8 md:mt-0">
+                    <div class="prose prose-invert max-w-none text-white/90">
+                        <p class="text-lg">Good administration gives your business structure, protects the owner, supports compliance, and makes audits far less stressful.</p>
+                        
+                        <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm">
+                            <div class="bg-white/10 p-5 rounded-2xl">
+                                <div class="font-semibold mb-1">Protects You</div>
+                                <div class="text-white/70 text-xs">Reduces personal liability and SARS penalties</div>
+                            </div>
+                            <div class="bg-white/10 p-5 rounded-2xl">
+                                <div class="font-semibold mb-1">Saves Time</div>
+                                <div class="text-white/70 text-xs">You focus on revenue, we handle the paperwork</div>
+                            </div>
+                            <div class="bg-white/10 p-5 rounded-2xl">
+                                <div class="font-semibold mb-1">Audit Ready</div>
+                                <div class="text-white/70 text-xs">Walk into any audit or review with confidence</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MEET BONITA / ABOUT -->
+    <section id="meet-bonita" class="max-w-7xl mx-auto px-6 py-16">
+        <div class="grid md:grid-cols-12 gap-x-10 items-center">
+            <div class="md:col-span-5">
+                <div class="aspect-square bg-[#F1E8D9] rounded-3xl overflow-hidden border border-[#D6BFA6]">
+                    <!-- Replace this image with your actual photo -->
+                    <img src="https://picsum.photos/id/1012/800/800" 
+                         alt="Bonita Flint, Founder of FLINT CORP - Professional compliance and finance expert"
+                         class="w-full h-full object-cover grayscale-[0.15]">
+                </div>
+            </div>
+            
+            <div class="md:col-span-7 mt-10 md:mt-0">
+                <div class="uppercase tracking-[2px] text-xs font-semibold text-[#A08F7A]">FOUNDER &amp; PRINCIPAL</div>
+                <h2 class="heading-serif text-5xl tracking-tighter mt-1">Bonita Flint</h2>
+                
+                <div class="mt-6 max-w-prose text-[#524B41]">
+                    <p class="leading-relaxed">With deep expertise across SARS compliance, Department of Labour requirements, COIDA, Employment Equity and business administration, Bonita founded FLINT CORP to give South African business owners peace of mind.</p>
+                    
+                    <p class="mt-4 leading-relaxed">She believes that robust compliance and clean administration should be accessible, practical, and empowering — not overwhelming. Her approach combines technical accuracy with genuine care for her clients’ businesses and teams.</p>
+                </div>
+                
+                <div class="mt-8 flex flex-wrap gap-3">
+                    <div class="inline-flex items-center gap-x-2 text-sm bg-white border border-[#D6BFA6] px-4 h-11 rounded-2xl">
+                        <i class="fa-solid fa-check text-[#A08F7A]"></i>
+                        <span class="font-medium">SARS &amp; Labour Liaison</span>
+                    </div>
+                    <div class="inline-flex items-center gap-x-2 text-sm bg-white border border-[#D6BFA6] px-4 h-11 rounded-2xl">
+                        <i class="fa-solid fa-check text-[#A08F7A]"></i>
+                        <span class="font-medium">Full Audit File Preparation</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RECOMMENDED SUPPORT ROLES / HOW WE WORK -->
+    <section class="bg-white border-y border-[#D6BFA6] py-14">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <h3 class="font-semibold text-3xl tracking-tight">Flexible Support That Fits Your Business</h3>
+                <p class="text-[#A08F7A] mt-2">Choose the level of partnership that works for you</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="border border-[#D6BFA6] rounded-3xl p-7">
+                    <div class="font-semibold text-xl">Compliance Coordinator</div>
+                    <div class="text-sm mt-1 text-[#A08F7A]">Ongoing monthly support</div>
+                    <div class="mt-6 text-sm space-y-2 text-[#524B41]">
+                        <div>• Deadline tracking &amp; submissions</div>
+                        <div>• Regular compliance health checks</div>
+                        <div>• SARS &amp; Labour liaison</div>
+                    </div>
+                </div>
+                <div class="border border-[#D6BFA6] rounded-3xl p-7">
+                    <div class="font-semibold text-xl">Payroll &amp; HR Administrator</div>
+                    <div class="text-sm mt-1 text-[#A08F7A]">Hands-on execution</div>
+                    <div class="mt-6 text-sm space-y-2 text-[#524B41]">
+                        <div>• Payroll compliance reviews</div>
+                        <div>• UIF, contracts &amp; leave management</div>
+                        <div>• Disciplinary documentation</div>
+                    </div>
+                </div>
+                <div class="border border-[#D6BFA6] rounded-3xl p-7">
+                    <div class="font-semibold text-xl">Project-Based / Audit Prep</div>
+                    <div class="text-sm mt-1 text-[#A08F7A]">One-time deep clean</div>
+                    <div class="mt-6 text-sm space-y-2 text-[#524B41]">
+                        <div>• Full audit file compilation</div>
+                        <div>• Historical reconciliation catch-up</div>
+                        <div>• System &amp; process setup</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL CTA / CONTACT -->
+    <section id="contact" class="max-w-4xl mx-auto px-6 py-20">
+        <div class="text-center mb-10">
+            <div class="text-[#A08F7A] text-sm font-semibold tracking-widest">LET'S TALK</div>
+            <h2 class="heading-serif text-5xl tracking-tighter mt-2">Ready to take the stress out of compliance?</h2>
+            <p class="mt-4 text-lg text-[#524B41]/80 max-w-md mx-auto">Book a free 30-minute strategy call. We’ll review your current setup and show you exactly where we can help.</p>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="bg-white border border-[#D6BFA6] rounded-3xl p-8 md:p-10 premium-shadow">
+            <form id="contact-form" onsubmit="handleFormSubmit(event)">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-6">
+                    <div>
+                        <label class="block text-xs font-semibold tracking-wider text-[#A08F7A] mb-1.5">FULL NAME</label>
+                        <input type="text" id="name" required 
+                               class="w-full border border-[#D6BFA6] focus:border-[#524B41] rounded-2xl px-5 py-3 text-sm outline-none transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold tracking-wider text-[#A08F7A] mb-1.5">BUSINESS NAME</label>
+                        <input type="text" id="business" required 
+                               class="w-full border border-[#D6BFA6] focus:border-[#524B41] rounded-2xl px-5 py-3 text-sm outline-none transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold tracking-wider text-[#A08F7A] mb-1.5">EMAIL ADDRESS</label>
+                        <input type="email" id="email" required 
+                               class="w-full border border-[#D6BFA6] focus:border-[#524B41] rounded-2xl px-5 py-3 text-sm outline-none transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-semibold tracking-wider text-[#A08F7A] mb-1.5">PHONE NUMBER</label>
+                        <input type="tel" id="phone" required 
+                               class="w-full border border-[#D6BFA6] focus:border-[#524B41] rounded-2xl px-5 py-3 text-sm outline-none transition-colors">
+                    </div>
+                </div>
+                
+                <div class="mt-6">
+                    <label class="block text-xs font-semibold tracking-wider text-[#A08F7A] mb-1.5">WHAT AREA DO YOU NEED SUPPORT WITH?</label>
+                    <select id="service-area" class="w-full border border-[#D6BFA6] focus:border-[#524B41] rounded-2xl px-5 py-3 text-sm outline-none bg-white transition-colors">
+                        <option value="">Please select...</option>
+                        <option value="SARS Compliance">SARS Compliance</option>
+                        <option value="Department of Labour &amp; HR">Department of Labour &amp; HR</option>
+                        <option value="COIDA / Compensation Fund">COIDA / Compensation Fund</option>
+                        <option value="Employment Equity">Employment Equity</option>
+                        <option value="Skills Development &amp; SETA">Skills Development &amp; SETA</option>
+                        <option value="Business Admin &amp; Audit Preparation">Business Admin &amp; Audit Preparation</option>
+                        <option value="Full Compliance Retainer">Full Compliance Retainer / Multiple Areas</option>
+                    </select>
+                </div>
+                
+                <div class="mt-6">
+                    <label class="block text-xs font-semibold tracking-wider text-[#A08F7A] mb-1.5">ANYTHING ELSE WE SHOULD KNOW?</label>
+                    <textarea id="message" rows="3" placeholder="E.g. Upcoming audit, new company setup, staff changes..."
+                              class="w-full border border-[#D6BFA6] focus:border-[#524B41] rounded-2xl px-5 py-3 text-sm outline-none resize-y transition-colors"></textarea>
+                </div>
+                
+                <button type="submit" 
+                        class="mt-8 w-full accent-btn py-4 rounded-2xl font-semibold text-base flex items-center justify-center gap-x-2 shadow-md active:scale-[0.985] transition-transform">
+                    <span>REQUEST MY FREE STRATEGY CALL</span>
+                </button>
+                
+                <p class="text-center text-[10px] text-[#A08F7A] mt-4">We typically respond within 2 business hours. Your information is kept confidential.</p>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-[#524B41] text-white/70 text-sm">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="flex flex-col md:flex-row justify-between gap-y-8">
+                <div>
+                    <div class="flex items-center gap-x-3 mb-3">
+                        <div class="w-9 h-9 bg-white/10 rounded-xl flex items-center justify-center">
+                            <span class="text-white text-2xl font-bold tracking-tighter">F</span>
+                        </div>
+                        <div class="font-bold text-white text-xl tracking-tighter">FLINT CORP</div>
+                    </div>
+                    <div class="text-xs">Where Finance Meets Flow</div>
+                    <div class="mt-4 text-xs">Cape Town &amp; George • Western Cape, South Africa</div>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-x-10 gap-y-8 text-xs">
+                    <div>
+                        <div class="font-semibold text-white mb-3 tracking-wider text-xs">SERVICES</div>
+                        <div class="space-y-[5px]">
+                            <div>SARS Compliance</div>
+                            <div>Labour &amp; HR</div>
+                            <div>COIDA</div>
+                            <div>Employment Equity</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-white mb-3 tracking-wider text-xs">COMPANY</div>
+                        <div class="space-y-[5px]">
+                            <div>About Bonita</div>
+                            <div>Our Approach</div>
+                            <div>Why It Matters</div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="font-semibold text-white mb-3 tracking-wider text-xs">GET IN TOUCH</div>
+                        <div class="space-y-[5px]">
+                            <div>Book a Strategy Call</div>
+                            <div>hello@flintcorp.co.za</div>
+                            <div class="pt-1">Western Cape, South Africa</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-white/10 text-xs flex flex-col md:flex-row justify-between items-center gap-y-2">
+                <div>© 2026 FLINT CORP (Pty) Ltd. All rights reserved.</div>
+                <div class="flex gap-x-5">
+                    <span class="hover:text-white cursor-pointer">Privacy</span>
+                    <span class="hover:text-white cursor-pointer">Terms</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="success-modal" onclick="if (event.target.id === 'success-modal') hideModal()" class="hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-6">
+        <div onclick="event.stopImmediatePropagation()" class="modal bg-white rounded-3xl max-w-md w-full p-8 text-center">
+            <div class="mx-auto w-16 h-16 bg-[#F1E8D9] rounded-full flex items-center justify-center mb-6">
+                <i class="fa-solid fa-check text-4xl text-[#524B41]"></i>
+            </div>
+            <h3 class="font-semibold text-2xl tracking-tight">Thank you, we've received your request.</h3>
+            <p class="mt-3 text-[#524B41]/80">Bonita or a member of the team will contact you within 2 business hours to schedule your free strategy call.</p>
+            
+            <div class="mt-7">
+                <button onclick="hideModal()" 
+                        class="px-8 py-3 text-sm font-semibold border border-[#524B41] hover:bg-[#524B41] hover:text-white rounded-2xl transition-colors">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tailwind script config
+        function initializeTailwind() {
+            document.documentElement.style.setProperty('--accent', '#524B41');
+        }
+        
+        // Mobile menu toggle
+        function setupMobileMenu() {
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+            
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+                const icon = btn.querySelector('i');
+                if (menu.classList.contains('hidden')) {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                } else {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                }
+            });
+            
+            // Close menu when clicking a link
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    btn.querySelector('i').classList.remove('fa-times');
+                    btn.querySelector('i').classList.add('fa-bars');
+                });
+            });
+        }
+        
+        // Service selection helper - pre-fills the form
+        function selectService(serviceName) {
+            const formSection = document.getElementById('contact');
+            formSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            // Pre-select the dropdown after scroll
+            setTimeout(() => {
+                const select = document.getElementById('service-area');
+                if (select) {
+                    // Find matching option
+                    for (let i = 0; i < select.options.length; i++) {
+                        if (select.options[i].value.includes(serviceName.split(' ')[0])) {
+                            select.selectedIndex = i;
+                            break;
+                        }
+                    }
+                    // Highlight effect
+                    select.style.borderColor = '#A08F7A';
+                    setTimeout(() => {
+                        select.style.borderColor = '#D6BFA6';
+                    }, 1200);
+                }
+            }, 900);
+        }
+        
+        // Form submission handler
+        function handleFormSubmit(e) {
+            e.preventDefault();
+            
+            const form = e.target;
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
+            
+            // Loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `
+                <span class="flex items-center justify-center gap-x-2">
+                    <i class="fa-solid fa-spinner fa-spin"></i> 
+                    <span>Sending your request...</span>
+                </span>
+            `;
+            
+            // Simulate API call / processing
+            setTimeout(() => {
+                // Hide form content and show success
+                form.style.transition = 'all 0.3s ease';
+                form.style.opacity = '0';
+                
+                setTimeout(() => {
+                    form.style.display = 'none';
+                    
+                    // Show success modal
+                    const modal = document.getElementById('success-modal');
+                    modal.style.display = 'flex';
+                    modal.classList.remove('hidden');
+                    
+                    // Reset form for future use (in case they close modal)
+                    setTimeout(() => {
+                        form.reset();
+                        form.style.opacity = '1';
+                        form.style.display = 'block';
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = originalText;
+                    }, 800);
+                }, 280);
+            }, 1450);
+        }
+        
+        function hideModal() {
+            const modal = document.getElementById('success-modal');
+            modal.style.transition = 'opacity 0.2s ease';
+            modal.style.opacity = '0';
+            
+            setTimeout(() => {
+                modal.style.opacity = '1';
+                modal.style.transition = '';
+                modal.style.display = 'none';
+                modal.classList.add('hidden');
+            }, 200);
+        }
+        
+        // Keyboard escape for modal
+        function setupKeyboardControls() {
+            document.addEventListener('keydown', function(e) {
+                if (e.key === "Escape") {
+                    const modal = document.getElementById('success-modal');
+                    if (!modal.classList.contains('hidden') && modal.style.display !== 'none') {
+                        hideModal();
+                    }
+                }
+                
+                // Quick form focus with "/"
+                if (e.key === "/" && document.activeElement.tagName === "BODY") {
+                    e.preventDefault();
+                    const formSection = document.getElementById('contact');
+                    formSection.scrollIntoView({ behavior: 'smooth' });
+                    setTimeout(() => {
+                        document.getElementById('name').focus();
+                    }, 650);
+                }
+            });
+            
+            // Easter egg: show keyboard hint in console
+            console.log('%c[FLINT CORP] Tip: Press "/" anywhere to jump to the contact form.', 'color:#A08F7A; font-size:9px');
+        }
+        
+        // Smooth scroll for all anchor links
+        function setupSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+        
+        // Main initialization
+        function initializeWebsite() {
+            initializeTailwind();
+            setupMobileMenu();
+            setupSmoothScroll();
+            setupKeyboardControls();
+            
+            // Optional: Pre-select a popular service in dropdown on load (commented for now)
+            // document.getElementById('service-area').selectedIndex = 1;
+            
+            // Make sure hero image has nice loading
+            const heroImg = document.querySelector('header img');
+            if (heroImg) {
+                heroImg.addEventListener('load', () => {
+                    heroImg.style.opacity = '1';
+                });
+            }
+            
+            // Accessibility: announce form ready
+            console.log('%c[FLINT CORP Website] High-converting compliance site initialized successfully.', 'color:#A08F7A');
+        }
+        
+        // Boot the site
+        window.onload = initializeWebsite;
+    </script>
+</body>
+</html>
